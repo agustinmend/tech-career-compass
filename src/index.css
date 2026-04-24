@@ -2,57 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* TechHub Design System — Royal Blue Corporate
+ * Fonts: Space Grotesk (headings) + DM Sans (body)
+ * All colors MUST be HSL.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
+    /* Core surfaces */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 222 47% 11%;
+    --surface: 214 32% 97%;
+    --surface-muted: 214 40% 94%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Brand: Royal Blue */
+    --primary: 222 78% 32%;            /* deep royal #1e3a8a-ish */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 217 91% 50%;       /* vivid blue accent */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --brand-navy: 217 64% 11%;         /* #0a1628 */
+    --brand-deep: 222 78% 32%;         /* #1e3a8a */
+    --brand-bright: 217 91% 50%;       /* #2563eb */
+    --brand-soft: 214 95% 93%;         /* #dbeafe */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --secondary: 214 32% 95%;
+    --secondary-foreground: 222 47% 15%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --muted: 214 32% 95%;
+    --muted-foreground: 215 20% 45%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --accent: 214 95% 93%;
+    --accent-foreground: 222 78% 32%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --destructive: 0 75% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --radius: 0.5rem;
+    --success: 152 60% 38%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 11%;
+
+    --border: 214 30% 88%;
+    --input: 214 30% 88%;
+    --ring: 217 91% 50%;
+
+    --radius: 0.875rem;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(217 64% 11%) 0%, hsl(222 78% 32%) 60%, hsl(217 91% 50%) 100%);
+    --gradient-soft: linear-gradient(135deg, hsl(214 95% 96%) 0%, hsl(214 95% 88%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(214 40% 98%) 100%);
+    --gradient-brand: linear-gradient(135deg, hsl(222 78% 32%) 0%, hsl(217 91% 50%) 100%);
+    --gradient-dark: linear-gradient(135deg, hsl(217 64% 11%) 0%, hsl(222 47% 18%) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 1px 2px 0 hsl(222 47% 11% / 0.04), 0 1px 3px 0 hsl(222 47% 11% / 0.06);
+    --shadow-md: 0 4px 12px -2px hsl(222 47% 11% / 0.08), 0 2px 6px -2px hsl(222 47% 11% / 0.05);
+    --shadow-lg: 0 18px 40px -12px hsl(222 78% 32% / 0.18);
+    --shadow-glow: 0 12px 32px -8px hsl(217 91% 50% / 0.35);
+    --shadow-card: 0 1px 3px hsl(222 47% 11% / 0.04), 0 8px 24px -8px hsl(222 47% 11% / 0.08);
+
+    /* Motion */
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --transition-base: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
 
     --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
+    --sidebar-foreground: 222 47% 25%;
+    --sidebar-primary: 222 78% 32%;
     --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 214 95% 95%;
+    --sidebar-accent-foreground: 222 78% 32%;
+    --sidebar-border: 214 30% 90%;
+    --sidebar-ring: 217 91% 50%;
   }
 
   .dark {
@@ -100,6 +129,30 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    @apply tracking-tight;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .text-gradient-brand {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .surface-card {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+    @apply rounded-2xl border border-border;
   }
 }
