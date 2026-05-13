@@ -1,0 +1,45 @@
+# Archivos de compilación
+bin/
+obj/
+
+# Archivos de usuario de Visual Studio
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Configuración local
+.vs/
+*.swp
+*.tmp
+*.log
+
+# Publicaciones y paquetes
+*.publish.xml
+*.pubxml
+*.pubxml.user
+*.pdb
+*.cache
+*.dbmdl
+*.bak
+*.backup
+*.mdf
+*.ldf
+
+# Archivos de configuración sensibles
+appsettings.Development.json
+appsettings.Local.json
+
+# Paquetes NuGet
+*.nupkg
+packages/
+*.snupkg
+
+# Archivos de test y cobertura
+TestResults/
+*.coverage
+*.coveragexml
+
+# Archivos de sistema
+Thumbs.db
+Desktop.ini
